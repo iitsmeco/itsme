@@ -1631,6 +1631,7 @@ button.teddy-soldout-button,button.teddy-soldout-button:hover{background:#E0E0E0
 <span id="total">0 EGP</span>
 </div>
 <div class="form" id="checkoutForm" style="display:none;">
+<div id="checkoutDepositNotice" style="padding:14px 16px;margin:0 0 16px;border:1px solid #d8c4ce;border-radius:14px;background:#fff8fb;color:#633b50;line-height:1.6;font-size:14px"><strong>50% Deposit Required</strong><div>A deposit of 50% of your total order, including shipping, is required to confirm your order. The remaining 50% is payable on delivery.</div></div>
 <input id="name" placeholder="Your name"/>
 <input id="phone" placeholder="Phone number"/>
 <textarea id="address" placeholder="Address"></textarea>
@@ -3918,7 +3919,7 @@ document.addEventListener('change',function(e){if(e.target&&Object.values(map).i
   if(!count){alert('Your bag is empty ♡');return;}
   const shipping=subtotal>=3000?0:100;
   items.innerHTML=html;
-  document.getElementById('itsme-summary-totals').innerHTML='<div class="summary-total"><span>Subtotal</span><span>'+money(subtotal)+'</span></div><div class="summary-total"><span>Shipping</span><span>'+(shipping===0?'FREE ♡':money(shipping))+'</span></div><div class="summary-total grand"><span>Total</span><span>'+money(subtotal+shipping)+'</span></div>'+(hasCase?'<p style="font-size:12px;color:#93647c">Mobile Case pre-order: 200 EGP deposit required to confirm your order.</p>':'');
+  document.getElementById('itsme-summary-totals').innerHTML='<div class="summary-total"><span>Subtotal</span><span>'+money(subtotal)+'</span></div><div class="summary-total"><span>Shipping</span><span>'+(shipping===0?'FREE ♡':money(shipping))+'</span></div><div class="summary-total grand"><span>Total</span><span>'+money(subtotal+shipping)+'</span></div><div class="summary-total"><strong>Deposit (50% incl. shipping)</strong><strong>'+money((subtotal+shipping)/2)+'</strong></div><div class="summary-total"><span>Remaining on delivery</span><span>'+money((subtotal+shipping)/2)+'</span></div><p style="font-size:13px;color:#93647c;line-height:1.5">A 50% deposit of the total including shipping is required to confirm your order.</p>';
   const val=id=>esc((document.getElementById(id)?.value||'').trim()||'—');
   const payment=esc(document.querySelector('input[name="paymentMethod"]:checked')?.value||'Cash on delivery');
   document.getElementById('itsme-summary-customer').innerHTML='<strong>Customer details</strong><div>Name: '+val('name')+'</div><div>Phone: '+val('phone')+'</div><div>Address: '+val('address')+'</div><div>Payment: '+payment+'</div>';
